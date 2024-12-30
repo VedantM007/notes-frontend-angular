@@ -1,0 +1,16 @@
+/* This assumes that your parent container is the body or a wrapper div */
+html, body {
+    height: 100%;  /* Ensure the body takes up the full viewport height */
+    margin: 0;
+  }
+  
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* This makes sure the footer stays at the bottom */
+  }
+  
+  app-notes {
+    flex-grow: 1; /* This makes the notes section take up available space */
+  }
+  

@@ -1,0 +1,31 @@
+<div class="row d-flex justify-content-center p-4 pt-5">
+    <div class="col-auto col-4">
+        <div class="input-group">
+          <div class="input-group-text"><i class="bi bi-search text-secondary"></i></div>
+          <input type="text" class="form-control custom-input" id="autoSizingInputGroup" placeholder="Filter">
+        </div>
+      </div>
+</div>
+
+
+<div class="row d-flex justify-content-center p-4 pt-5">
+    <div class="custom-card col-4" (mouseenter)="isVisible = true" (mouseleave)="isVisible = false">
+        <span class="d-flex justify-content-end pt-1">
+       @if (isVisible == true) {
+            <button class="custom-button" style="background: rgb(253, 221, 221);">
+                <i class="bi bi-x-lg"></i>
+            </button>
+       }
+       @else {
+        <button class="custom-button" style="background: none;">
+            <i class="bi bi-x-lg text-light"></i>
+        </button>
+       }
+
+    </span>
+        <div class="p-3 pt-0">
+     <div class="custom-primary-color fs-5">Reminder</div>
+     <div class="pt-2 text-secondary">Remember to call Vedant</div>
+    </div>
+    </div>
+</div>

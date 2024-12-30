@@ -1,0 +1,34 @@
+::ng-deep input::placeholder {
+    color: #bdbdbd !important
+  }
+  
+.custom-input{
+    background-color: #f5f6f9;
+    border: 1px solid white;
+    border-radius: 0px;
+}
+
+.custom-input:focus {
+    border-color: #41c0f5 !important; /* Change to your desired border color */
+    box-shadow: none !important; /* Remove the box-shadow */
+  }
+  
+.input-group-text{
+    border: 1px;
+    border-radius: 0px;
+}
+
+.custom-card{
+    border: 1px solid white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+
+}
+
+.custom-primary-color{
+    color: #baa6dd;
+}
+
+.custom-button{
+    border: none;
+    color: red;
+}
