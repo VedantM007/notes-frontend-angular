@@ -32,3 +32,9 @@
     border: none;
     color: red;
 }
+.custom-add-button{
+    background-color: #baa6dd;
+    padding: 0.35rem;
+    border: none;
+    color: white;
+}

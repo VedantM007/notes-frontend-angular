@@ -1,31 +1,36 @@
-<div class="row d-flex justify-content-center p-4 pt-5">
-    <div class="col-auto col-4">
+<div class="d-flex justify-content-between p-4 pt-5">
+    <div class="col-2"></div>
+    <div class="col-auto col-3">
         <div class="input-group">
           <div class="input-group-text"><i class="bi bi-search text-secondary"></i></div>
-          <input type="text" class="form-control custom-input" id="autoSizingInputGroup" placeholder="Filter">
+          <input #search type="text" (keyup)="filterNotes(search.value)" class="form-control custom-input" id="autoSizingInputGroup" placeholder="Filter">
         </div>
       </div>
-</div>
-
-
-<div class="row d-flex justify-content-center p-4 pt-5">
-    <div class="custom-card col-4" (mouseenter)="isVisible = true" (mouseleave)="isVisible = false">
-        <span class="d-flex justify-content-end pt-1">
-       @if (isVisible == true) {
-            <button class="custom-button" style="background: rgb(253, 221, 221);">
-                <i class="bi bi-x-lg"></i>
-            </button>
-       }
-       @else {
-        <button class="custom-button" style="background: none;">
-            <i class="bi bi-x-lg text-light"></i>
+      <div class="col-auto col-2">
+        <button class="custom-add-button col-12" (click)="navigate()">
+            <i class="bi bi-plus-lg text-light"></i> Add New Note
         </button>
-       }
-
-    </span>
-        <div class="p-3 pt-0">
-     <div class="custom-primary-color fs-5">Reminder</div>
-     <div class="pt-2 text-secondary">Remember to call Vedant</div>
     </div>
-    </div>
+    
 </div>
+
+@if (filteredNotes.length > 0) {
+    @for (note of filteredNotes; track $index) {
+        <div class="row d-flex justify-content-center p-4 pt-2">
+            <div class="custom-card col-3">
+                <div class="p-2 pt-0 mb-1">
+                    <div class="d-flex justify-content-between pt-1 mt-2">
+                        <div class="custom-primary-color fs-5">{{note.title}}</div>
+                        <button class="custom-button" style="background: rgb(253, 221, 221);" (click)="deleteNote(note._id)">
+                            <i class="bi bi-x-lg"></i>
+                        </button>
+                    </div>
+             <div class="pt-2 text-secondary">{{note.body}}</div>
+            </div>
+            </div>
+        </div>
+        }
+}
+@else {
+    <div class="d-flex justify-content-center mt-5">Notes Not Available</div>
+}

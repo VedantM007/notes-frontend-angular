@@ -10,7 +10,3 @@ html, body {
     min-height: 100vh; /* This makes sure the footer stays at the bottom */
   }
   
-  app-notes {
-    flex-grow: 1; /* This makes the notes section take up available space */
-  }
-  

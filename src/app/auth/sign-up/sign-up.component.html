@@ -1,0 +1,147 @@
+<div class="container">
+    <div class="align-items-center justify-content-center sign-in-page">
+        <div class="row">
+            <div class="col-4">&nbsp;</div>
+    <div class="col-4 sign-in-card">
+        <div class="container-fluid logo">
+            <div class="d-flex justify-content-center p-3">
+           <span class="text-light fs-4">Note Mate</span>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <div class="card-content">
+                    <div class="text-center d-flex justify-content-center align-items-center mb-4">
+                        Sign Up to get started with Note Mate
+                    </div>
+                <div class="form-container">
+                    <form [formGroup]="myForm" (ngSubmit)="onSave()">
+                        <div class="form-group">
+                            <input
+                              id="fname"
+                              type="text"
+                              formControlName="fname"
+                              placeholder="First Name"
+                              [ngClass]="{'is-invalid': myForm.get('fname')?.invalid && myForm.get('fname')?.touched}"
+                            />
+                            <div *ngIf="myForm.get('fname')?.invalid && myForm.get('fname')?.touched">
+                                <small class="error" *ngIf="myForm.get('fname')?.hasError('required')">
+                                  First Name is required.
+                                </small>
+                              </div>
+                          </div>
+                        <div class="form-group">
+                            <input
+                              id="lname"
+                              type="text"
+                              formControlName="lname"
+                              placeholder="Last Name"
+                              [ngClass]="{'is-invalid': myForm.get('lname')?.invalid && myForm.get('lname')?.touched}"
+                            />
+                            <div *ngIf="myForm.get('lname')?.invalid && myForm.get('lname')?.touched">
+                                <small class="error" *ngIf="myForm.get('lname')?.hasError('required')">
+                                  Last Name is required.
+                                </small>
+                              </div>
+                          </div>
+                      <div class="form-group">
+                        <input
+                          id="email"
+                          type="text"
+                          formControlName="email"
+                          placeholder="Email"
+                          [ngClass]="{'is-invalid': myForm.get('email')?.invalid && myForm.get('email')?.touched}"
+                        />
+                        <div *ngIf="myForm.get('email')?.touched">
+                            <small class="error" *ngIf="myForm.get('email')?.hasError('required')">
+                              Email is required.
+                            </small>
+                            <small class="error" *ngIf="myForm.get('email')?.hasError('email')">
+                              Please enter a valid email address.
+                            </small>
+                          </div>
+                      </div>
+                  
+                      <div class="form-group position-relative">
+                        <div class="password-container">
+                          <input
+                            id="password"
+                            [type]="showPassword ? 'text' : 'password'"
+                            formControlName="password"
+                            placeholder="Password"
+                            [ngClass]="{'is-invalid': myForm.get('password')?.invalid && myForm.get('password')?.touched}"
+                          />
+                          <button
+                            type="button"
+                            (click)="togglePasswordVisibility()"
+                            class="toggle-password"
+                          >
+                            {{ showPassword ? 'Hide' : 'Show' }}
+                          </button>
+                        </div>
+                      
+                        <!-- Error for required and minLength -->
+                        <div *ngIf="myForm.get('password')?.invalid && myForm.get('password')?.touched">
+                          <small class="error" *ngIf="myForm.get('password')?.hasError('required')">
+                            Password is required.
+                          </small>
+                          <small class="error" *ngIf="myForm.get('password')?.hasError('minlength')">
+                            Password must be at least 6 characters long.
+                          </small>
+                        </div>
+                      
+                        <!-- Error for password strength -->
+                        <div *ngIf="myForm.get('password')?.hasError('passwordWeak') && myForm.get('password')?.touched">
+                          <small class="error">
+                            Password must contain at least one uppercase letter, one special character, and one number.
+                          </small>
+                        </div>
+                      </div>
+                      
+                      <!-- Confirm Password -->
+                      <div class="form-group position-relative">
+                        <div class="password-container">
+                          <input
+                            id="cPassword"
+                            [type]="showConfirmPassword ? 'text' : 'password'"
+                            formControlName="cPassword"
+                            placeholder="Confirm Password"
+                            [ngClass]="{'is-invalid': myForm.get('cPassword')?.invalid && myForm.get('cPassword')?.touched}"
+                          />
+                          <button
+                            type="button"
+                            (click)="toggleConfirmPasswordVisibility()"
+                            class="toggle-password"
+                          >
+                            {{ showConfirmPassword ? 'Hide' : 'Show' }}
+                          </button>
+                        </div>
+                        <div *ngIf="myForm.get('cPassword')?.invalid && myForm.get('cPassword')?.touched">
+                          <small class="error" *ngIf="myForm.get('cPassword')?.hasError('required')">
+                            Confirm Password is required.
+                          </small>
+                        </div>
+                        <div *ngIf="myForm.hasError('passwordMismatch') && myForm.get('cPassword')?.touched">
+                          <small class="error">Passwords do not match.</small>
+                        </div>
+                      </div>
+                      
+                      
+                      
+                  
+                        <button type="submit" [disabled]="myForm.invalid || isLoading" class="save-btn col-12">
+                          <span *ngIf="isLoading" class="spinner"></span>
+                          sign up
+                        </button>
+                    </form>
+                </div>
+                  </div>
+            </div>
+        </div>
+    <div class="p-1 d-flex justify-content-center">Back to&nbsp;<a class="link" (click)="navigate()">Sign In</a></div>
+    <div class="text-secondary d-flex justify-content-center">{{footerText}}</div>
+    </div>
+    </div>
+    </div>
+    </div>
+    

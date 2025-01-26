@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="align-items-center justify-content-center sign-in-page">
+    <div class="row">
+      <div class="col-4">&nbsp;</div>
+      <div class="col-4 sign-in-card">
+        <div class="container-fluid logo">
+          <div class="d-flex justify-content-center p-3">
+            <span class="text-light fs-4">Note Mate</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <div class="card-content">
+              <div class="text-center d-flex justify-content-center align-items-center mb-4">
+                Sign in to start your session
+              </div>
+              <div class="form-container">
+                <form [formGroup]="myForm" (ngSubmit)="onSave()">
+                  <!-- Email Input -->
+                  <div class="form-group">
+                    <input
+                      id="email"
+                      type="text"
+                      formControlName="email"
+                      placeholder="Email"
+                      [ngClass]="{'is-invalid': myForm.get('email')?.invalid && myForm.get('email')?.touched}"
+                    />
+                    <div *ngIf="myForm.get('email')?.touched">
+                      <small class="error" *ngIf="myForm.get('email')?.hasError('required')">
+                        Email is required.
+                      </small>
+                      <small class="error" *ngIf="myForm.get('email')?.hasError('email')">
+                        Please enter a valid email address.
+                      </small>
+                    </div>
+                  </div>
+                  <!-- Password Input -->
+                  <div class="form-group position-relative">
+                    <div class="password-container">
+                    <input
+                      id="password"
+                      [type]="showPassword ? 'text' : 'password'"
+                      formControlName="password"
+                      placeholder="Password"
+                      [ngClass]="{'is-invalid': myForm.get('password')?.invalid && myForm.get('password')?.touched}"
+                    />
+
+                    <button
+                      type="button"
+                      (click)="togglePasswordVisibility()"
+                      class="toggle-password"
+                    >
+                      {{ showPassword ? 'Hide' : 'Show' }}
+                    </button>
+                  </div>
+                    <div *ngIf="myForm.get('password')?.invalid && myForm.get('password')?.touched">
+                      <small class="error">Password is required.</small>
+                    </div>
+                  </div>
+                  <!-- Submit Button -->
+                  <button type="submit" [disabled]="myForm.invalid || isLoading" class="save-btn col-12">
+                    <span *ngIf="isLoading" class="spinner"></span>
+                    Sign In
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="p-1 d-flex justify-content-center">
+          Don't have an account? &nbsp;<a class="link" (click)="navigate()">Sign Up</a>
+        </div>
+        <div class="text-secondary d-flex justify-content-center">{{ footerText }}</div>
+      </div>
+    </div>
+  </div>
+</div>

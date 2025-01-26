@@ -1,0 +1,145 @@
+.sign-in-page{
+    .sign-in-card{
+        margin-top: 1rem;
+    }
+}
+
+.logo {
+    background: linear-gradient(90deg, #fd94ca, #baa6dd, #8eb0e6, #41c0f5); /* Adjust colors for your gradient */
+    border: 0.5px solid #fd94ca;
+    box-shadow: 0 0 5px #fd94ca(0, 0, 0, 0.2);
+  }
+
+  .card{
+    /* border: 0.5px solid #41c0f5; */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 0;
+
+  }
+  .form-container {
+    max-width: 500px;
+    padding: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+    position: relative;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    background-color: #f5f6f9;
+    border: 1px solid white;
+    border-radius: 5px;
+  }
+  
+  input:focus{
+    border-color: #00bfff;
+    outline: none;
+  }
+  
+  
+  .error {
+    color: red;
+    font-size: 12px;
+    display: block;
+  }
+  
+  button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .save-btn {
+    background-color: #baa6dd;
+    color: #666;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Space between spinner and text */
+    padding: 10px 20px;
+    font-size: 16px;
+    position: relative;
+    text-transform: uppercase;
+  }
+  
+  button:disabled {
+    background-color: #e6dbf9;
+    cursor: not-allowed;
+  }
+
+  .spinner {
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid transparent;
+    border-top: 2px solid #000; /* Spinner color */
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .link{
+    color: #0000EE;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #007bff;
+  }
+  
+  .toggle-password:hover {
+    text-decoration: underline;
+  }
+
+  /* Ensure input and button stay aligned */
+.password-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* Style the input field */
+.password-container input {
+  width: 100%;
+  padding-right: 60px; /* Space for the button */
+}
+
+/* Style the toggle button */
+.password-container .toggle-password {
+  position: absolute;
+  right: 10px; /* Adjust spacing from the right */
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #007bff; /* Adjust color as needed */
+}
+
+/* Prevent button from moving when errors appear */
+.form-group {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+.is-invalid {
+  border: 1px solid red;
+}

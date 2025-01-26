@@ -1,4 +1,13 @@
 .gradient-background {
     background: linear-gradient(90deg, #fd94ca, #baa6dd, #8eb0e6, #41c0f5); /* Adjust colors for your gradient */
   }
-  
+
+.custom-image{
+  max-width: 3rem; border: 1px solid #fd94ca; border-radius: 3rem;
+}
+
+a{
+  text-decoration: none;
+  cursor: pointer;
+  color: white !important;
+}
