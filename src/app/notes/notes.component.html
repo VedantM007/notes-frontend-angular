@@ -1,36 +1,69 @@
-<div class="d-flex justify-content-between p-4 pt-5">
-    <div class="col-2"></div>
-    <div class="col-auto col-3">
+<!-- Filter and Add Button Section -->
+<div class="container-fluid p-4 pt-5">
+    <div class="row align-items-center justify-content-center justify-content-md-between">
+      <!-- Left Spacer for Larger Screens -->
+      <div class="col-12 col-md-2 col-lg-2 mb-3 mb-md-0">&nbsp;</div>
+  
+      <!-- Search Input -->
+      <div class="col-12 col-md-5 col-lg-4 mb-3 mb-md-0">
         <div class="input-group">
-          <div class="input-group-text"><i class="bi bi-search text-secondary"></i></div>
-          <input #search type="text" (keyup)="filterNotes(search.value)" class="form-control custom-input" id="autoSizingInputGroup" placeholder="Filter">
+          <span class="input-group-text"><i class="bi bi-search text-secondary"></i></span>
+          <input
+            #search
+            type="text"
+            (keyup)="filterNotes(search.value)"
+            class="form-control custom-input"
+            placeholder="Filter"
+          />
         </div>
       </div>
-      <div class="col-auto col-2">
-        <button class="custom-add-button col-12" (click)="navigate()">
-            <i class="bi bi-plus-lg text-light"></i> Add New Note
+  
+      <!-- Add New Note Button -->
+      <div class="col-12 col-md-2 col-lg-2 d-flex justify-content-center justify-content-md-end" style="margin-bottom: 0.2rem;">
+        <button class="custom-add-button col-12 col-md-auto" (click)="navigate()">
+          <i class="bi bi-plus-lg text-light"></i> Add New Note
         </button>
+      </div>
     </div>
-    
-</div>
+  </div>
+  
 
-@if (filteredNotes.length > 0) {
-    @for (note of filteredNotes; track $index) {
-        <div class="row d-flex justify-content-center p-4 pt-2">
-            <div class="custom-card col-3">
-                <div class="p-2 pt-0 mb-1">
-                    <div class="d-flex justify-content-between pt-1 mt-2">
-                        <div class="custom-primary-color fs-5">{{note.title}}</div>
-                        <button class="custom-button" style="background: rgb(253, 221, 221);" (click)="deleteNote(note._id)">
-                            <i class="bi bi-x-lg"></i>
-                        </button>
-                    </div>
-             <div class="pt-2 text-secondary">{{note.body}}</div>
+  <!-- Spinner or Notes Section -->
+  <div class="container-fluid">
+    <!-- Loading Spinner -->
+    @if (isLoading == true) {
+      <div class="d-flex justify-content-center mt-5">
+        <div class="spinner-border text-secondary" role="status"></div>
+      </div>
+    }
+    <!-- Notes Section -->
+    @else {
+      @if (filteredNotes.length > 0) {
+        <!-- Notes Cards -->
+        <div class="d-flex flex-column align-items-center p-4 pt-2">
+          @for (note of filteredNotes; track $index) {
+            <!-- Each card width matches the filter field -->
+            <div class="col-12 col-md-5 col-lg-4 mb-4">
+              <div class="custom-card p-3">
+                <div class="d-flex justify-content-between">
+                  <div class="custom-primary-color fs-5">{{note.title}}</div>
+                  <button
+                    class="custom-button"
+                    style="background: rgb(253, 221, 221);"
+                    (click)="deleteNote(note._id)"
+                  >
+                    <i class="bi bi-x-lg"></i>
+                  </button>
+                </div>
+                <div class="pt-2 text-secondary">{{note.body}}</div>
+              </div>
             </div>
-            </div>
+          }
         </div>
-        }
-}
-@else {
-    <div class="d-flex justify-content-center mt-5">Notes Not Available</div>
-}
+      }
+      @else {
+        <div class="d-flex justify-content-center mt-5">Notes Not Available</div>
+      }
+    }
+  </div>
+  

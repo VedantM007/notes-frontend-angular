@@ -1,13 +1,24 @@
-.sign-in-page{
-    .sign-in-card{
-        margin-top: 8rem;
-    }
+.container {
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center;    /* Centers vertically */
+  height: 100vh;          /* Adjust height as needed */
 }
-
 .logo {
     background: linear-gradient(90deg, #fd94ca, #baa6dd, #8eb0e6, #41c0f5); /* Adjust colors for your gradient */
     border: 0.5px solid #fd94ca;
     box-shadow: 0 0 5px #fd94ca(0, 0, 0, 0.2);
+  }
+
+  .sign-in-card {
+    width: 100%;
+   min-width: 400px; /* Adjust as per your design */
+  }
+  
+  .logo span {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: white;
   }
 
   .card{

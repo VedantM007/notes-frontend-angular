@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "./header/header.component";
-import { NotesComponent } from "./notes/notes.component";
-import { FooterComponent } from "./footer/footer.component";
 import { NewNoteComponent } from "./new-note/new-note.component";
 import { filter } from 'rxjs';
 import { CommonModule } from '@angular/common';

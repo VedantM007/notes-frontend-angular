@@ -18,6 +18,7 @@ export class NotesComponent implements OnInit{
   notes : Note[] = [];
   userId : string = ''
   filteredNotes: Note[] = [];
+  isLoading: boolean = true;
   constructor(private notesService : NotesService, private toastr : ToastrService,private router : Router){}
 
   ngOnInit() {
@@ -32,6 +33,7 @@ export class NotesComponent implements OnInit{
         console.log("response:::: ", response)
         this.notes = response
         this.filteredNotes = [...this.notes];
+        this.isLoading = false;
       },
       error : (err:HttpErrorResponse) => {
         console.log(err)
@@ -39,6 +41,7 @@ export class NotesComponent implements OnInit{
           this.router.navigate(['/']);
           this.toastr.error('Please Sign In again', 'Session Timeout');
           sessionStorage.clear();
+          this.isLoading = false;
         }
       }
     })
@@ -47,6 +50,7 @@ export class NotesComponent implements OnInit{
 
 
   deleteNote(id:string){
+    this.isLoading = true;
     this.notesService.deleteNote(id).pipe(first()).subscribe({
       next : (res)=>{
         this.toastr.info('Selected Note deleted', 'Deleted');
@@ -54,6 +58,7 @@ export class NotesComponent implements OnInit{
       },
       error : (err:HttpErrorResponse)=>{
         this.toastr.error(err.message, 'Error')
+        this.isLoading = false;
       }
     })
   }
